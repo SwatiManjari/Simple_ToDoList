@@ -1,35 +1,26 @@
-let existingBoxes = document.querySelectorAll(".taskBox");
-
-existingBoxes.forEach(function(task) {
-  task.querySelector("input").addEventListener("change", function() {
-    if (this.checked) {
-      task.querySelector("span").style.textDecoration = "line-through";
-    } else {
-      task.querySelector("span").style.textDecoration = "none";
-    }
-  });
-});
-
 let btn = document.getElementById("addBtn");
+let input = document.getElementById("taskInput");
+let taskList = document.getElementById("taskList");
 
-btn.addEventListener("click", function() {
-  let txt = document.getElementById("taskInput").value;
+btn.addEventListener("click", addTask);
 
-  let taskList = document.getElementById("taskList");
+function addTask() {
+    let txt = input.value.trim();
 
-  let newTask = document.createElement("div");
-  newTask.classList.add("taskBox");
-  newTask.innerHTML = `<input type="checkbox"> <span>${txt}</span>`;
-
-  taskList.appendChild(newTask);
-
-  newTask.querySelector("input").addEventListener("change", function() {
-    if (this.checked) {
-      newTask.querySelector("span").style.textDecoration = "line-through";
-    } else {
-      newTask.querySelector("span").style.textDecoration = "none";
+    if (txt === "") {
+        return;
     }
-  });
 
-  document.getElementById("taskInput").value = "";
-});
+    let newTask = document.createElement("div");
+    newTask.classList.add("taskBox");
+
+    newTask.innerHTML = `
+        <input type="checkbox">
+        <span>${txt}</span>
+    `;
+
+    taskList.appendChild(newTask);
+
+    input.value = "";
+    input.focus();
+}
