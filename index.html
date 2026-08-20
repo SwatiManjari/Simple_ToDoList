@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+
+    <title>Simple To-Do List</title>
+
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <div class="card">
-        <div id="head">
-            <img src="./cat.png">
-            
-        </div>
-        <div id="taskList"></div>
+
+    <main class="card">
+
+        <header class="header">
+            <img src="./cat.png" alt="Cute cat">
+
+            <div>
+                <h1>My Tasks</h1>
+            </div>
+        </header>
+
+        <section id="taskList" aria-label="Task list"></section>
+
         <div id="inputArea">
-            <input type="text" id="taskInput" placeholder="Add a task..." />
-            <button id="addBtn">+</button>
+            <input type="text" id="taskInput" placeholder="Add a new task..." aria-label="New task">
+            <button id="addBtn" type="button" aria-label="Add task">+</button>
         </div>
-    </div>
+
+    </main>
+
     <script src="./todo.js"></script>
 </body>
 </html>
